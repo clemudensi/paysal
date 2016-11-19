@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bank_account_id: 1
+  employee_id: MyText
+  date_of_birth: 2016-11-16
+  date_joined_company: 2016-11-16
+  date_left_company: 2016-11-16
+  gender: MyText
+  job_title: MyText
+  first_name: MyText
+  middle_name: MyText
+  last_name: MyText
+  residential_address: MyText
+  organizaion_id: 1
+
+two:
+  bank_account_id: 1
+  employee_id: MyText
+  date_of_birth: 2016-11-16
+  date_joined_company: 2016-11-16
+  date_left_company: 2016-11-16
+  gender: MyText
+  job_title: MyText
+  first_name: MyText
+  middle_name: MyText
+  last_name: MyText
+  residential_address: MyText
+  organizaion_id: 1
