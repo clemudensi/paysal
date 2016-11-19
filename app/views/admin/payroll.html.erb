@@ -1,0 +1,66 @@
+<%= render 'header' %>
+<h1>Payroll Analysis (Month)</h1>
+<div id="margin1">
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div> <!-- /.modal-content -->
+    </div> <!-- /.modal-dialog -->
+</div>
+	<table class="container">
+		<thead>
+			<tr>
+				<th><h1>Emloyee/ID</h1></th>
+				<th><h1>Standard salary</h1></th>
+				<th><h1>Hours worked (hrs)</h1></th>
+				<th><h1>Additional earnings</h1></th>
+				<th><h1>Gross pay</h1></th>
+				<th><h1>Pay day</h1></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><%= link_to 'Simeon', 'userpage', 'data-toggle' => 'modal', 'data-target' => '#myModal' %></td>
+				<td>800k</td>
+				<td>600</td>
+				<td>20k</td>
+				<td>820k</td>
+				<td>Nov 26</td>
+			</tr>
+			<tr>
+				<td>Clement</td>
+				<td>800k</td>
+				<td>600</td>
+				<td>20k</td>
+				<td>820k</td>
+				<td>Nov 26</td>
+			</tr>
+			<tr>
+				<td>Sakhile</td>
+				<td>800k</td>
+				<td>600</td>
+				<td>20k</td>
+				<td>820k</td>
+				<td>Nov 26</td>
+			</tr>
+	    <tr>
+				<td>Steven</td>
+				<td>500k</td>
+				<td>600</td>
+				<td>20k</td>
+				<td>520k</td>
+				<td>Nov 26</td>
+			</tr>
+	    <tr>
+				<td>Tony</td>
+				<td>500k</td>
+				<td>600</td>
+				<td>20k</td>
+				<td>520k</td>
+				<td>Nov 26</td>
+			</tr>
+	    
+		</tbody>
+	</table>
+</div>
+<%= render 'footer' %>
