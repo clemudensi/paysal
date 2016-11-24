@@ -6,6 +6,7 @@ class CreateOrganizations < ActiveRecord::Migration[5.0]
       t.text :logo
       t.text :tax_id_no
       t.integer :address_id
+      # t.date :date_founded
 
       t.timestamps
     end

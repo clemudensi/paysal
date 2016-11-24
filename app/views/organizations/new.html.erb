@@ -1,0 +1,24 @@
+<div class="container">
+	<h1> Organization Form</h1>
+	<%= form_for @organization do |f| %>
+		<%= f.label :legal_name %><br>
+		<%= f.text_field :legal_name %><br>
+		<br>
+		<%= f.label :legal_entity_code %><br>
+		<%= f.text_field :legal_entity_code %><br>
+		<br>
+		<%= f.label :logo %><br>
+		<%= f.text_field :logo %><br>
+		<br>
+		<%= f.label :tax_id_no %><br>
+		<%= f.text_field :tax_id_no %><br>
+		<br>
+		<%= f.label :address_id %><br>
+		<%= f.text_field :address_id %><br>
+		<br>
+		<%= f.label :date_founded %><br>
+		<%= f.date_select :date_founded %><br>
+		<br>
+		<%= f.submit %>
+		<% end %>
+</div>

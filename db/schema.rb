@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161116020916) do
+ActiveRecord::Schema.define(version: 20161123231607) do
 
   create_table "addresses", force: :cascade do |t|
     t.text     "country"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20161116020916) do
     t.integer  "organization_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.         "organization"
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -86,6 +87,7 @@ ActiveRecord::Schema.define(version: 20161116020916) do
     t.integer  "address_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.date     "date_founded"
   end
 
 end

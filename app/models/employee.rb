@@ -1,3 +1,4 @@
 class Employee < ApplicationRecord
-    validates :email, uniqueness: {case_sensitive: false}
+	belongs_to :organization
+  # validates :email, uniqueness: {case_sensitive: false}
 end
