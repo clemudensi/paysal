@@ -2,6 +2,7 @@ class OrganizationsController < ApplicationController
 
   def index
   	@organizations = Organization.all
+  	
   end
 
   def new
@@ -25,7 +26,13 @@ class OrganizationsController < ApplicationController
   private
 
 	def organization_params
-		params.require(:organization).permit(:legal_name, :legal_entity_code, :logo, :tax_id_no, :address_id)
+		params.require(:organization).permit(
+			:legal_name,
+			:legal_entity_code,
+			:logo, :tax_id_no,
+			:address_id,
+			:date_founded
+			)
 	end
 
 end

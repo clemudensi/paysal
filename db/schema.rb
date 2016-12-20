@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20161123231607) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "addresses", force: :cascade do |t|
     t.text     "country"
     t.text     "state"
@@ -76,7 +79,6 @@ ActiveRecord::Schema.define(version: 20161123231607) do
     t.integer  "organization_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
-    t.         "organization"
   end
 
   create_table "organizations", force: :cascade do |t|

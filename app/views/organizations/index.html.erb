@@ -2,14 +2,5 @@
 <p>Find me in app/views/organizations/index.html.erb</p>
 <div class="container">
 	<%= link_to 'Create New Company',  new_organization_path(@organization) %>
-	<%= link_to 'Add New Employee', new_organization_employee_path(@organization) %>
-	<% @organizations.each do |organization| %>
-		<h1><%= @organization.legal_name %></h1>
-		<p>Oraganization name: <%= @organization.legal_name %></p>
-		<p>Legal entity: <%= @organization.legal_entity_code %></p>
-		<p>tax ID: <%= @organization.tax_id_no %></p>
-		<p>Logo: <%= @organization.logo %></p>
-		<p>Address: <%= @organization.address_id %></p>
-		<p>Date founded: <%= @organization.date_founded %></p>
-	<% end %>
+	
 </div>

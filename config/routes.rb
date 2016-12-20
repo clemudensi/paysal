@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   # resources :admin
   # resources :welcome
   get 'employees/new'
-  post 'employees/show'
+  get 'employees/show'
   get 'admin/dashboard'
   get 'admin/accounts'
   get 'admin/payroll'
