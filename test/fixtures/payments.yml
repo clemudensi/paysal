@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee_id: MyText
+  payment_status: false
+  month: 2016-12-22
+
+two:
+  employee_id: MyText
+  payment_status: false
+  month: 2016-12-22

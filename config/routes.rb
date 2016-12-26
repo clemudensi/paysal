@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'admin/accounts'
   get 'admin/payroll'
   get 'admin/userpage'
+  get 'admin/accounts/employees/new'
 
   get 'app/index'
 
