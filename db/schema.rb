@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161226153621) do
+ActiveRecord::Schema.define(version: 20161229143140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,11 +49,6 @@ ActiveRecord::Schema.define(version: 20161226153621) do
     t.text     "organization_id"
   end
 
-  create_table "contractors_contracts", id: false, force: :cascade do |t|
-    t.integer "contractor_id", null: false
-    t.integer "contract_id",   null: false
-  end
-
   create_table "contracts", force: :cascade do |t|
     t.datetime "valid_start"
     t.datetime "valid_end"
@@ -83,6 +78,8 @@ ActiveRecord::Schema.define(version: 20161226153621) do
     t.integer  "organization_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.integer  "payment_id"
+    t.index ["payment_id"], name: "index_employees_on_payment_id", using: :btree
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -90,10 +87,12 @@ ActiveRecord::Schema.define(version: 20161226153621) do
     t.text     "legal_entity_code"
     t.text     "logo"
     t.text     "tax_id_no"
-    t.integer  "address_id"
+    t.string   "address_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.date     "date_founded"
+    t.integer  "employee_id"
+    t.index ["employee_id"], name: "index_organizations_on_employee_id", using: :btree
   end
 
   create_table "payments", force: :cascade do |t|
@@ -108,4 +107,6 @@ ActiveRecord::Schema.define(version: 20161226153621) do
     t.text     "gross_pay"
   end
 
+  add_foreign_key "employees", "payments"
+  add_foreign_key "organizations", "employees"
 end

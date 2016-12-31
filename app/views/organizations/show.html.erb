@@ -1,13 +1,18 @@
 <div class="container">
-	<%= link_to 'Create New Company',  new_organization_path(@organization) %>
-	<%= link_to 'Add New Employee', new_organization_employee_path(@organization) %>
-	<% @organizations.each do |organization| %>
-		<h1><%= organization.legal_name %></h1>
-		<p>Oraganization name: <%= organization.legal_name %></p>
-		<p>Legal entity: <%= organization.legal_entity_code %></p>
-		<p>tax ID: <%= organization.tax_id_no %></p>
-		<p>Logo: <%= organization.logo %></p>
-		<p>Address: <%= organization.address_id %></p>
-		<p>Date founded: <%= organization.date_founded %></p>
-	<% end %>
+
+		<%= link_to 'Add New Employee', new_organization_employee_path(@organization) %> |
+		<%= link_to 'Add New Contractor', new_organization_contractor_path(@organization) %>
+
+		<h1>Employees of <%= @organization.legal_name %></h1>
+
+		<div class="container">
+			<% @employees.each do |employee| %>
+			<h3><%= link_to employee.first_name, organization_employee_path(@organization, employee.id) %></h3>
+			<% end %>
+			
+		</div>
+		
+		<%= link_to 'Edit', edit_organization_path(@organization) %> |
+		<%= link_to 'Back', organizations_path %>
+
 </div>

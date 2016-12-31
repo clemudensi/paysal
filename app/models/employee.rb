@@ -1,4 +1,5 @@
 class Employee < ApplicationRecord
 	belongs_to :organization
-  # validates :email, uniqueness: {case_sensitive: false}
+	
+  validates :first_name, presence: true
 end

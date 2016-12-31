@@ -1,9 +1,10 @@
 class EmployeesController < ApplicationController
-	# before_action :set_organization
+	before_action :set_employee, only: [:show, :edit]
+	before_action :set_organization, only: [:create, :show, :destroy, :update, :edit, :new, :index]
+  
 
   def index
-  	# @employee = Employee.find(params[:id])
-		@employees = Employee.all
+		@employees = Employee.all.order('created_at DESC')
   end
 
   def new
@@ -11,28 +12,64 @@ class EmployeesController < ApplicationController
   end 
   
   def create
-  	@organization = Organization.find(params[:organization_id])
-  	employee = Employee.new(employee_params)
-  	@employee = @organization.employees << employee
-  	redirect_to controller: "employees", action: "show"
- # #  	@employee = Employee.new(employee_params)
- # #  	if @employee.save
- # #  		redirect_to @employee
- # #  	else
- # #  		render 'new'	
- # #  	end
+  	@employee = @organization.employees.create(employee_params)
+		# redirect_to 'show'
+  	# @organization = Organization.find(params[:id])
+  	# employee = Employee.new(employee_params)
+  	# @employee = @organization.employees << employee
+  	#  	# @employee = @organization.employee.create(employee_params)
+  	# redirect_to 'show'
+ 
+  	if @employee.save
+  		flash[:success] = "Employee was Created"
+  		redirect_to @organization
+  	else
+  		render 'new'	
+  	end
 	end
 
 	def show
-		# @employee = Employee.find(params[:id])
-		@employees = Employee.all
+	end
+
+	def edit
+	end
+
+	def update
+		if Employee.update(params[:id], employee_params)
+			redirect_to organization_employee_path
+		else
+			render 'edit'
+		end
+	end
+
+	def destroy
+		@employee = @organization.employees.find(params[:id])
+		@employee.destroy
+		# @employee = organization.employee.find(params[:id])
+		redirect_to organization_path(@organization)
+		# if @employee.destroy
+		# 	flash[:success] = "Employee was deleted"
+		# else
+		# 	flash[:error] = "Employee was not deleted"
+		
+		# end
+		# if @todo_item.destroy
+		# 	flash[:success] = "Todo List item was deleted."
+		# else
+		# 	flash[:error] = "Todo List item could not be deleted."
+		# end
+		# redirect_to @todo_list
 	end
 
   private
 
-  # def set_organization
-  # 	@organization = Organizations.find(params[:organization_id])
-  # end
+  def set_employee
+  	@employee = Employee.find(params[:id])
+  end
+
+  def set_organization
+		@organization = Organization.find(params[:organization_id])
+	end
 
 	def employee_params
 		params.require(:employee).permit(
@@ -41,8 +78,10 @@ class EmployeesController < ApplicationController
 			:date_of_birth, 
 			:date_joined_company, 
 			:date_left_company, 
-			:gender, :job_title, 
-			:first_name, :middle_name, 
+			:gender, 
+			:job_title, 
+			:first_name, 
+			:middle_name, 
 			:last_name, 
 			:residential_address, 
 			:organization_id)

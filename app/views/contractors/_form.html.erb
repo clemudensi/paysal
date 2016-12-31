@@ -1,0 +1,27 @@
+<div class="container">
+	<%= form_for @contractor, url:{ controller: "contractors", action: "create" } do |f| %>
+		<%= f.label :first_name %><br>
+		<%= f.text_field :first_name %><br>
+		<br>
+		<%= f.label :last_name %><br>
+		<%= f.text_field :last_name %><br>
+		<br>
+		<%= f.label :middle_name %><br>
+		<%= f.text_field :middle_name %><br>
+		<br>
+		<%= f.label :gender %><br>
+		<%= f.select :gender, [['Male','male'],['Female','female']] %>
+		<br>
+		<br>
+		<%= f.label :bank_account_id %><br>
+		<%= f.text_field :bank_account_id %><br>
+		<br>
+		<%= f.label :job_title %><br>
+		<%= f.text_field :job_title %><br>
+		<br>
+		<%= f.label :organization_id %><br>
+		<%= f.text_field :organization_id %><br>
+		<br>
+		<%= f.submit %>
+		<% end %>
+</div>

@@ -1,6 +1,23 @@
-<h1>Organizations#index</h1>
-<p>Find me in app/views/organizations/index.html.erb</p>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blog</title>
+   <%= javascript_include_tag 'application' %>
+   
+  <%= favicon_link_tag 'favicon.ico' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
 <div class="container">
 	<%= link_to 'Create New Company',  new_organization_path(@organization) %>
+
+	<% @organizations.each do |organization| %>
+		<h2><%= link_to organization.legal_name, organization_path(organization.id) %></h2>
+		<%= link_to "Delete", organization_path(organization), method: :delete, data: { confirm: "Are you sure?" } %>
 	
+	<% end %>
 </div>
+
+</body>
+</html>

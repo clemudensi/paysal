@@ -1,0 +1,16 @@
+<h1>Contractors</h1>
+<div class="container">
+	
+	<h1><%= @contractor.first_name %></h1>
+	<p>First name: <%= @contractor.first_name %></p>
+	<p>Last name: <%= @contractor.last_name %></p>
+	<p>Middle name: <%= @contractor.middle_name %></p>
+	<p>Gender: <%= @contractor.gender %></p>
+	<p>Bank account: <%= @contractor.bank_account_id %></p>
+	<p>Job title: <%= @contractor.job_title %></p>
+	<p>Organization Id: <%= @contractor.organization_id %></p>
+
+	<%= link_to 'Edit', edit_organization_contractor_path %> |
+	<%= link_to 'Back', organization_contractors_path %>
+	
+</div>

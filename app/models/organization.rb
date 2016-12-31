@@ -1,3 +1,6 @@
 class Organization < ApplicationRecord
-	has_many :employees
+	validates :legal_name, presence: true
+	
+	has_many :employees, :dependent => :destroy
+	has_many :contractors
 end

@@ -5,6 +5,7 @@ class AdminController < ApplicationController
   def accounts
   	@employee = Employee.all
   	@contractor = Contractor.all
+    @organization = Contractor.all
   end
 
   def payroll

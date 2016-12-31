@@ -1,17 +1,19 @@
 <div class="container">
-	<% @employees.each do |employee| %>
-		<h1><%= employee.first_name %></h1>
-		<p>First name: <%= employee.first_name %></p>
-		<p>Last name: <%= employee.last_name %></p>
-		<p>Middle name: <%= employee.middle_name %></p>
-		<p>Gender: <%= employee.gender %></p>
-		<p>Bank account: <%= employee.bank_account_id %></p>
-		<p>Employee status: <%= employee.employee_id %></p>
-		<p>Date of Birth: <%= employee.date_of_birth %></p>
-		<p>Job title: <%= employee.job_title %></p>
-		<p>Organization Id: <%= employee.organization_id %></p>
-		<p>Date Joined: <%= employee.date_joined_company %></p>
-		<p>Date Left: <%= employee.date_left_company %></p>
-		<p>Residential Address: <%= employee.residential_address %></p>
-	<% end %>
+	
+		<h1><%= @employee.first_name %></h1>
+		<p>First name: <%= @employee.first_name %></p>
+		<p>Last name: <%= @employee.last_name %></p>
+		<p>Middle name: <%= @employee.middle_name %></p>
+		<p>Gender: <%= @employee.gender %></p>
+		<p>Bank account: <%= @employee.bank_account_id %></p>
+		<p>Employee status: <%= @employee.employee_id %></p>
+		<p>Date of Birth: <%= @employee.date_of_birth %></p>
+		<p>Job title: <%= @employee.job_title %></p>
+		<p>Date Joined: <%= @employee.date_joined_company %></p>
+		<p>Residential Address: <%= @employee.residential_address %></p>
+
+		<%= link_to 'Edit', edit_organization_employee_path %> |
+		<%= link_to 'Back', organization_path(@organization) %> |
+		<%= link_to 'Delete', organization_employee_path, method: :delete, data: {confirm: 'Are you sure you want to delete?'} %>
+	
 </div>
