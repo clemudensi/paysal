@@ -15,7 +15,7 @@ class OrganizationsController < ApplicationController
   	@organization = Organization.new(organization_params)
   	if @organization.save
   		flash[:success] = "Organization was created successfully"
-  		redirect_to @organization
+  		redirect_to @organization, notice: "Organization created successfully"
   	else
   		render 'new'
   	end
@@ -37,7 +37,6 @@ class OrganizationsController < ApplicationController
 	end 
 
 	def destroy
-		# @organization = Organization.find(params[:id])	
 		if @organization.destroy
 			redirect_to organizations_path
 			flash[:success] = "Organization was deleted"

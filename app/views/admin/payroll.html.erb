@@ -1,4 +1,3 @@
-<%= render 'header' %>
 <h1>Payroll Analysis (Month)</h1>
 <div id="margin1">
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -19,48 +18,16 @@
 			</tr>
 		</thead>
 		<tbody>
+		<% @employees.each do |employee| %>
 			<tr>
-				<td><%= link_to 'Simeon', 'userpage', 'data-toggle' => 'modal', 'data-target' => '#myModal' %></td>
-				<td>800k</td>
-				<td>600</td>
-				<td>20k</td>
-				<td>820k</td>
-				<td>Nov 26</td>
+				<td><%= link_to employee.first_name << ' ' << employee.last_name, organization_employee_path(employee.organization, employee), 'data-toggle' => 'modal', 'data-target' => '#myModal' %></td>
+				<td><%= %></td>
+				<td><%= %></td>
+				<td><%= %></td>
+				<td><%= %></td>
+				<td><%= %></td>
 			</tr>
-			<tr>
-				<td>Clement</td>
-				<td>800k</td>
-				<td>600</td>
-				<td>20k</td>
-				<td>820k</td>
-				<td>Nov 26</td>
-			</tr>
-			<tr>
-				<td>Sakhile</td>
-				<td>800k</td>
-				<td>600</td>
-				<td>20k</td>
-				<td>820k</td>
-				<td>Nov 26</td>
-			</tr>
-	    <tr>
-				<td>Steven</td>
-				<td>500k</td>
-				<td>600</td>
-				<td>20k</td>
-				<td>520k</td>
-				<td>Nov 26</td>
-			</tr>
-	    <tr>
-				<td>Tony</td>
-				<td>500k</td>
-				<td>600</td>
-				<td>20k</td>
-				<td>520k</td>
-				<td>Nov 26</td>
-			</tr>
-	    
+		<% end %>
 		</tbody>
 	</table>
 </div>
-<%= render 'footer' %>

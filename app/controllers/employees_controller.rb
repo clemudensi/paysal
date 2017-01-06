@@ -21,14 +21,16 @@ class EmployeesController < ApplicationController
   	# redirect_to 'show'
  
   	if @employee.save
-  		flash[:success] = "Employee was Created"
+  		flash[:notice] = "Employee was Created"
   		redirect_to @organization
   	else
+  		flash[:notice] = "Sorry, Please put a name" 
   		render 'new'	
   	end
 	end
 
 	def show
+		render :layout => false
 	end
 
 	def edit
@@ -84,7 +86,8 @@ class EmployeesController < ApplicationController
 			:middle_name, 
 			:last_name, 
 			:residential_address, 
-			:organization_id)
+			:organization_id,
+			:image)
 	end
 
 end

@@ -7,7 +7,7 @@
 
 		<div class="container">
 			<% @employees.each do |employee| %>
-			<h3><%= link_to employee.first_name, organization_employee_path(@organization, employee.id) %></h3>
+			<h3><%= link_to employee.first_name << ' ' << employee.last_name, organization_employee_path(@organization, employee.id) %></h3>
 			<% end %>
 			
 		</div>

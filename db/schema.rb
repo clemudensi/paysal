@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161229143140) do
+ActiveRecord::Schema.define(version: 20170106011733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,10 @@ ActiveRecord::Schema.define(version: 20161229143140) do
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.integer  "payment_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
     t.index ["payment_id"], name: "index_employees_on_payment_id", using: :btree
   end
 
@@ -96,11 +100,10 @@ ActiveRecord::Schema.define(version: 20161229143140) do
   end
 
   create_table "payments", force: :cascade do |t|
-    t.text     "employee_id"
-    t.boolean  "payment_status"
+    t.boolean  "payment_status", default: false
     t.date     "month"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.text     "salary"
     t.text     "hrs_worked"
     t.text     "extra_pay"

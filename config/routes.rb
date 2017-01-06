@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   resources :organizations do
-    resources :employees
+    resources :employees do
+      resources :payments
+    end
     resources :contractors
   end
   # resources :admin
@@ -22,6 +24,8 @@ Rails.application.routes.draw do
   get 'admin/accounts'
   get 'admin/payroll'
   get 'admin/userpage'
+  get 'admin/organizations'
+  get 'admin/trial'
 
   get 'app/index'
 

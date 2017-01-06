@@ -58,5 +58,5 @@ gem 'bourbon'
 gem 'neat'                                                                                                     
 gem 'bitters'                                                                                                  
 gem 'refills'
-
+gem 'paperclip', '~> 4.3', '>= 4.3.6'
 

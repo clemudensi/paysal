@@ -1,6 +1,9 @@
 <div class="container">
 	<h1> Employee Form</h1>
-	<%= form_for [@organization, @employee] do |f| %>
+	<%= form_for [@organization, @employee], html: { multipart: true } do |f| %>
+		<%= f.label :image %><br>
+		<%= f.file_field :image %><br>
+		<br>
 		<%= f.label :first_name %><br>
 		<%= f.text_field :first_name %><br>
 		<br>
@@ -20,7 +23,7 @@
 		<%= f.text_field :employee_id %><br>
 		<br>
 		<%= f.label :date_of_birth %><br>
-		<%= f.date_select(:date_of_birth, start_year: 1900) %><br>
+		<%= f.text_field :date_of_birth,placeholder: "YYYY/MM/DD" %><br>
 		<br>
 		<%= f.label :job_title %><br>
 		<%= f.text_field :job_title %><br>

@@ -5,16 +5,18 @@ class AdminController < ApplicationController
   def accounts
   	@employee = Employee.all
   	@contractor = Contractor.all
-    @organization = Contractor.all
+    @organization = Organization.all
   end
 
   def payroll
+    @employees = Employee.all
+    @organization = Organization.find_by(params[:id])
   end
 
   def show
   end
 
-  # private 
+  private 
 
   def employee_params
 		params.require(:employee).permit(
@@ -27,5 +29,9 @@ class AdminController < ApplicationController
 			:bank_account_id
 			)
 	end
+
+  def userpage
+    render :layout => false
+  end 
 
 end

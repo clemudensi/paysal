@@ -10,7 +10,8 @@
 <body>
 
 <div class="container">
-	<%= link_to 'Create New Company',  new_organization_path(@organization) %>
+	<%= link_to 'Create New Company',  new_organization_path(@organization) %> |
+	<%= link_to 'Dashboard', admin_dashboard_path %>
 
 	<% @organizations.each do |organization| %>
 		<h2><%= link_to organization.legal_name, organization_path(organization.id) %></h2>
