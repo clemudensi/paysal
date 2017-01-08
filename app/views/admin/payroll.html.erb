@@ -18,14 +18,14 @@
 			</tr>
 		</thead>
 		<tbody>
-		<% @employees.each do |employee| %>
+		<% @payments.each do |payment| %>
 			<tr>
-				<td><%= link_to employee.first_name << ' ' << employee.last_name, organization_employee_path(employee.organization, employee), 'data-toggle' => 'modal', 'data-target' => '#myModal' %></td>
-				<td><%= %></td>
-				<td><%= %></td>
-				<td><%= %></td>
-				<td><%= %></td>
-				<td><%= %></td>
+				<td><%= link_to payment.employee.first_name << ' ' << payment.employee.last_name, organization_employee_path(payment.employee.organization, payment.employee), 'data-toggle' => 'modal', 'data-target' => '#myModal' %></td>
+				<td><%= payment.salary %></td>
+				<td><%= payment.hrs_worked %></td>
+				<td><%= payment.extra_pay %></td>
+				<td><%= payment.gross_pay %></td>
+				<td><%= payment.month %></td>
 			</tr>
 		<% end %>
 		</tbody>

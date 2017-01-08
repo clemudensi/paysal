@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170106011733) do
+ActiveRecord::Schema.define(version: 20170107170227) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,16 +100,22 @@ ActiveRecord::Schema.define(version: 20170106011733) do
   end
 
   create_table "payments", force: :cascade do |t|
-    t.boolean  "payment_status", default: false
+    t.boolean  "payment_status",  default: false
     t.date     "month"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.text     "salary"
     t.text     "hrs_worked"
     t.text     "extra_pay"
     t.text     "gross_pay"
+    t.integer  "employee_id"
+    t.integer  "organization_id"
+    t.index ["employee_id"], name: "index_payments_on_employee_id", using: :btree
+    t.index ["organization_id"], name: "index_payments_on_organization_id", using: :btree
   end
 
   add_foreign_key "employees", "payments"
   add_foreign_key "organizations", "employees"
+  add_foreign_key "payments", "employees"
+  add_foreign_key "payments", "organizations"
 end

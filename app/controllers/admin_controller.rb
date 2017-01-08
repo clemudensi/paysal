@@ -9,8 +9,7 @@ class AdminController < ApplicationController
   end
 
   def payroll
-    @employees = Employee.all
-    @organization = Organization.find_by(params[:id])
+    @payments = Payment.all
   end
 
   def show
@@ -20,7 +19,18 @@ class AdminController < ApplicationController
 
   def employee_params
 		params.require(:employee).permit(
-			:employee_id
+			:employee_id,
+      :date_of_birth, 
+      :date_joined_company, 
+      :date_left_company, 
+      :gender, 
+      :job_title, 
+      :first_name, 
+      :middle_name, 
+      :last_name, 
+      :residential_address, 
+      :organization_id,
+      :image
 			)
 	end
 

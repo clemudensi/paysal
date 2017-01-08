@@ -1,0 +1,27 @@
+<div class="container">
+	<h1> Payment Form</h1>
+	<%= form_for [@employee, @payment] do |f| %>
+		<%= f.label :Employee %><br>
+		<%= f.select :employee_id, Employee.all.collect { |p| [ p.first_name << ' ' << p.last_name, p.id ] }, include_blank: true %><br>
+		<br>
+		<%= f.label :Salary %><br>
+		<%= f.text_field :salary %><br>
+		<br>
+		<%= f.label :Hrs_Worked %><br>
+		<%= f.text_field :hrs_worked %><br>
+		<br>
+		<%= f.label :Extra_pay %><br>
+		<%= f.text_field :extra_pay %><br>
+		<br>
+		<%= f.label :Gross_Pay %><br>
+		<%= f.text_field :gross_pay %><br>
+		<br>
+		<%= f.label :Pay_Day %><br>
+		<%= f.date_select :month %><br>
+		<br>
+		<%= f.label :Payment_Status %><br>
+		<%= f.date_select :payment_status %><br>
+		<br>
+		<%= f.submit %>
+		<% end %>
+</div>

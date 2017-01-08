@@ -14,7 +14,7 @@
 		<%= f.text_field :middle_name %><br>
 		<br>
 		<%= f.label :gender %><br>
-		<%= f.select :gender, [['Male','male'],['Female','female']] %>
+		<%= f.select :gender, [['Male','male'],['Female','female']], include_blank: true %>
 		<br>
 		<%= f.label :bank_account_id %><br>
 		<%= f.text_field :bank_account_id %><br>
@@ -29,7 +29,7 @@
 		<%= f.text_field :job_title %><br>
 		<br>
 		<%= f.label :date_joined_company %><br>
-		<%= f.date_select :date_joined_company %><br>
+		<%= f.date_select :date_joined_company, start_year: 2005, include_blank: true %><br>
 		<br>
 		<%= f.label :residential_address %><br>
 		<%= f.text_field :residential_address %><br>

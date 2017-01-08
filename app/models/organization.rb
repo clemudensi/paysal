@@ -3,4 +3,5 @@ class Organization < ApplicationRecord
 	
 	has_many :employees, :dependent => :destroy
 	has_many :contractors
+	has_many :payments, through: :employees
 end

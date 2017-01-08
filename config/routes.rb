@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
   resources :organizations do
-    resources :employees do
-      resources :payments
-    end
+    resources :employees 
     resources :contractors
+  end
+
+  resources :employees do
+    resources :payments
   end
   # resources :admin
   # resources :welcome
