@@ -1,13 +1,24 @@
+
 <div class="modal-body">
-	<h1><%= @payment.employee.first_name %> <%= @employee.last_name %> </h1>
+  <%= link_to 'Back', organization_employee_path(@payment.employee.organization, @payment.employee) %> |
+  <%= link_to 'Edit', edit_employee_payment_path(@payment.employee, @payment) %>
+
+	<h1><%= @payment.employee.first_name %>  </h1>
 	<br>
 	<%= image_tag @payment.employee.image.url(:medium), alt: "" %>
 	<br>
-	<p>Salary:<%= @payment.salary %></p>
-	<p>Hours worked:<%= @payment.hrs_worked %></p>
-	<p>Employee ID:<%= @payment.employee_id %></p>
-	
-	<p>Payment Status:<%= @payment.payment_status ? 'Paid' : 'Unpaid' %></p>
-	
-	<p>Payment Date:<%= @payment.month %></p>
+  <p>Employee ID: <%= @payment.employee_id %></p>
+  <br>
+	<p>Salary: $<%= (@payment.cost_salary * @payment.hrs_worked) %></p>
+  <br>
+	<p>Total Hrs worked: <%= (@payment.hrs_worked + @payment.hrs_extra) %></p>
+  <br>
+  <p>Extra pay: $<%= (@payment.hrs_extra * @payment.cost_extra) %></p>
+  <br>
+	<p>Gross Pay: $<%= ((@payment.cost_salary * @payment.hrs_worked) + (@payment.hrs_extra * @payment.cost_extra)) %></p>
+  <br>
+  <p>Payment Status: <%= @payment.payment_status ? 'Paid' : 'Unpaid' %></p>
+  <br>
+  <p>Payment Date: <%= @payment.month %></p>
+
 </div>

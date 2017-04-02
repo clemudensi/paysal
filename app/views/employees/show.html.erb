@@ -11,12 +11,14 @@
   <body>
 	  <div class="container">
 	  	<div class="modal-header">
-	    <%= link_to 'Edit Payments', new_employee_payment_path(@employee) %> |
-	    <%= link_to 'Payments Details', employee_payment_path(@employee) %>
+	    <%= link_to 'New Payment detail', new_employee_payment_path(@employee) %> |
+        <%= link_to 'Edit', edit_organization_employee_path(@employee.organization, @employee) %>
 
 		</div>      <!-- /modal-header -->
-	    <div class="modal-body">
-	    		<h1><%= @employee.first_name %> <%= @employee.last_name %> </h1>
+      <div class="alert-success" id="notice"><%= flash[:notice] %></div>
+
+      <div class="modal-body">
+	    		<h2><%= @employee.first_name %> <%= @employee.last_name %> </h2>
 	    		<br>
 				<%= image_tag @employee.image.url(:medium), alt: "" %>
 				<br>

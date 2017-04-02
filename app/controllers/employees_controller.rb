@@ -1,5 +1,5 @@
 class EmployeesController < ApplicationController
-	before_action :set_employee, only: [:show, :edit]
+	before_action :set_employee, only: [:show, :edit, :destroy]
 	before_action :set_organization, only: [:create, :show, :destroy, :update, :edit, :new, :index]
   
 
@@ -13,23 +13,23 @@ class EmployeesController < ApplicationController
   
   def create
   	@employee = @organization.employees.create(employee_params)
-		# redirect_to 'show'
-  	# @organization = Organization.find(params[:id])
-  	# employee = Employee.new(employee_params)
-  	# @employee = @organization.employees << employee
-  	#  	# @employee = @organization.employee.create(employee_params)
-  	# redirect_to 'show'
- 
   	if @employee.save
-  		flash[:notice] = "Employee was Created"
-  		redirect_to @organization
+      flash[:notice] = "Employee was Created"
+      redirect_to organization_employee_path(@employee.organization, @employee)
+
   	else
-  		flash[:notice] = "Sorry, Please put a name" 
-  		render 'new'	
+  		flash[:notice] = "Sorry, Please put a name"
+  		render 'new'
   	end
 	end
 
 	def show
+		@employee = Employee.find(params[:id])
+		# @payment = Payment.find(params[:id])
+    # @payment = @employee.payments.all
+
+
+
 		render :layout => false
 	end
 
@@ -38,35 +38,32 @@ class EmployeesController < ApplicationController
 
 	def update
 		if Employee.update(params[:id], employee_params)
-			redirect_to organization_employee_path
+      flash[:notice] = "Employee was Updated"
+      redirect_to organization_employee_path
 		else
 			render 'edit'
 		end
 	end
 
 	def destroy
-		@employee = @organization.employees.find(params[:id])
-		@employee.destroy
+		# @employee = Employee.find(params[:id])
+		# @employee.destroy
 		# @employee = organization.employee.find(params[:id])
-		redirect_to organization_path(@organization)
-		# if @employee.destroy
-		# 	flash[:success] = "Employee was deleted"
-		# else
-		# 	flash[:error] = "Employee was not deleted"
-		
-		# end
-		# if @todo_item.destroy
-		# 	flash[:success] = "Todo List item was deleted."
-		# else
-		# 	flash[:error] = "Todo List item could not be deleted."
-		# end
-		# redirect_to @todo_list
+
+		if @employee.destroy
+			flash[:success] = "<%= @employee.first_name %> Employee was deleted"
+    redirect_to organization_path(@organization)
+		else
+			flash[:error] = "Employee was not deleted"
+		    render 'show'
+		end
+
 	end
 
   private
 
   def set_employee
-  	@employee = Employee.find(params[:id])
+  	# @employee = Employee.find(params[:id])
   end
 
   def set_organization

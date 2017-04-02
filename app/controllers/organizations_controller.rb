@@ -57,7 +57,8 @@ class OrganizationsController < ApplicationController
 			:legal_entity_code,
 			:logo, :tax_id_no,
 			:address_id,
-			:date_founded
+			:date_founded,
+			:image
 			)
 	end
 

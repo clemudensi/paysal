@@ -5,6 +5,6 @@ class Employee < ApplicationRecord
 	has_attached_file :image, styles: { large: "600x600>", medium: "300x300>", thumb: "150x150#" }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 	belongs_to :organization
-	has_many :payments, :foreign_key => :payment_id
+	has_many :payments, dependent: :destroy
 	validates :first_name, presence: true
 end

@@ -1,33 +1,83 @@
-<h1>Payroll Analysis (Month)</h1>
-<div id="margin1">
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        </div> <!-- /.modal-content -->
-    </div> <!-- /.modal-dialog -->
-</div>
-	<table class="container">
-		<thead>
-			<tr>
-				<th><h1>Emloyee/ID</h1></th>
-				<th><h1>Standard salary</h1></th>
-				<th><h1>Hours worked (hrs)</h1></th>
-				<th><h1>Additional earnings</h1></th>
-				<th><h1>Gross pay</h1></th>
-				<th><h1>Pay day</h1></th>
-			</tr>
-		</thead>
-		<tbody>
-		<% @payments.each do |payment| %>
-			<tr>
-				<td><%= link_to payment.employee.first_name << ' ' << payment.employee.last_name, organization_employee_path(payment.employee.organization, payment.employee), 'data-toggle' => 'modal', 'data-target' => '#myModal' %></td>
-				<td><%= payment.salary %></td>
-				<td><%= payment.hrs_worked %></td>
-				<td><%= payment.extra_pay %></td>
-				<td><%= payment.gross_pay %></td>
-				<td><%= payment.month %></td>
-			</tr>
-		<% end %>
-		</tbody>
-	</table>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<!--  This file has been downloaded from bootdey.com    @bootdey on twitter -->
+		<!--  All snippets are MIT license http://bootdey.com/license -->
+		<!--
+		The codes are free, but we require linking to our web site.
+		Why to Link?
+		A true story: one girl didn't set a link and had no decent date for two years, and another guy set a link and got a top ranking in Google!
+		Where to Put the Link?
+		home, about, credits... or in a good page that you want
+		THANK YOU MY FRIEND!
+		-->
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		
+	</head>
+	<body>
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+		<h1>Payroll Analysis (Month)</h1>
+		<div id="margin1">
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						</div> <!-- /.modal-content -->
+						</div> <!-- /.modal-dialog -->
+					</div>
+					</div>
+					<div class="container">
+						<% @payments.each do |payment| %>
+						<div class="member-entry">
+							<a href="#" class="member-img"> <%= image_tag payment.employee.image.url(:medium), alt: "" %>
+								<i class="fa fa-forward"></i>
+							</a>
+							<div class="member-details">
+								<h4> <%= link_to payment.employee.first_name << ' ' << payment.employee.last_name, organization_employee_path(payment.employee.organization, payment.employee), 'data-toggle' => 'modal', 'data-target' => '#myModal' %> </h4>
+								<div class="row info-list">
+									<div class="col-sm-4">
+										<i class="fa fa-briefcase"></i>
+										Salary <p>$<%= (payment.cost_salary * payment.hrs_worked) %></p>
+									</div>
+									<div class="col-sm-4">
+										<i class="fa fa-twitter"></i>
+										Payment-month
+										<p><%= payment.month %></p>
+									</div>
+									<div class="col-sm-4">
+										<i class="fa fa-facebook"></i>
+										Worked-Hrs
+										<p>$<%= (payment.hrs_worked + payment.hrs_extra) %></p>
+									</div>
+									<div class="clear"></div>
+									<div class="col-sm-4">
+										<i class="fa fa-location"></i>
+										Extra-Pay
+										<p>$<%= (payment.hrs_extra * payment.cost_extra) %></p>
+									</div>
+									<div class="col-sm-4">
+										<i class="fa fa-envelope"></i>
+										Gross-Pay
+										<p><%= ((payment.cost_salary * payment.hrs_worked) + (payment.hrs_extra * payment.cost_extra)) %></p>
+									</div>
+									<div class="col-sm-4">
+										<i class="fa fa-linkedin"></i>
+										Linkedin
+                    <p><%= link_to 'View details', employee_payment_path(payment.employee, payment) %></p>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+
+					<% end %>
+				</div>
+				
+				<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+				<script type="text/javascript">
+				
+				</script>
+			</body>
+		</html>

@@ -4,11 +4,25 @@
 		<%= link_to 'Add New Contractor', new_organization_contractor_path(@organization) %>
 
 		<h1>Employees of <%= @organization.legal_name %></h1>
+  <div class="alert-success" id="notice"><%= flash[:notice] %></div>
 
 		<div class="container">
-			<% @employees.each do |employee| %>
-			<h3><%= link_to employee.first_name << ' ' << employee.last_name, organization_employee_path(@organization, employee.id) %></h3>
-			<% end %>
+          <table class="table">
+            <thead>
+            <tr>
+              <th><h1>Emloyee/ID</h1></th>
+            </tr>
+            </thead>
+            <% @employees.each do |employee| %>
+            <tbody>
+            <tr>
+              <td><h3><%= link_to employee.first_name << ' ' << employee.last_name, organization_employee_path(@organization, employee.id) %></h3></td>
+            </tr>
+            </tbody>
+            <% end %>
+          </table>
+
+
 			
 		</div>
 		

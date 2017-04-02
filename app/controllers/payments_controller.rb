@@ -2,25 +2,38 @@ class PaymentsController < ApplicationController
 	before_action :set_payment, only: [:show, :edit]
 	before_action :set_employee, only: [:create, :show, :destroy, :update, :edit, :new]
 	# before_action :set_organization, only: [:create, :show, :destroy, :update, :edit, :new, :index]
-  
+
 
 	def create
-		@organization = Organization.find_by(params[:organization_id])
-  	@payment = @employee.payments.create(payment_params)
+		@payment = @employee.payments.create(payment_params)
   	if @payment.save
   		flash[:notice] = "Payment details have been created"
-  		redirect_to organization_employee_path(@organization, @employee)
+  		render 'show'
   	else
   		flash[:notice] = "Could not be saved due to errors" 
   		render 'new'	
-  	end
+		end
+
+		# @extra_pay = (hrs_extra * cost_extra)
+		# @salary = (cost_salary * hrs_worked)
+		# @gross_pay = (@extra_pay + @salary)
 	end
+
+	# def extra_pay
+	# 	@extra_pay = Payment.collect { |payment| payment.hrs_extra * payment.cost_extra}
+	# end
+  #
+	# def salary
+	# 	@salary = Payment.collect { |payment| payment.cost_salary * payment.hrs_worked}
+	# end
+
 
 	def new
 		@payment = Payment.new
 	end
 
 	def show
+
 	end
 
 	def edit
@@ -28,7 +41,7 @@ class PaymentsController < ApplicationController
 
 	def update
 		if Payment.update(params[:id], payment_params)
-			redirect_to organization_employee_path
+			redirect_to employee_payment_path
 		else
 			render 'edit'
 		end
@@ -56,12 +69,16 @@ class PaymentsController < ApplicationController
 			:payment_status,
 			:month,
 			:salary,
+      :cost_extra,
+      :cost_salary,
+      :hrs_extra,
 			:hrs_worked,
 			:extra_pay,
 			:gross_pay,
 			:employee_id,
 			:created_at,
-			:updated_at,
+			:updated_at
+
 			)
 	end
 
