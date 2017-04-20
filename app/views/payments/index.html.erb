@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blog</title>
+  <%= javascript_include_tag 'application' %>
+
+  <%= favicon_link_tag 'favicon.ico' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="container">
+
+  <% @payments.each do |payment| %>
+      <h2><%= link_to payment.employee.first_name, employee_payment_path(payment.employee, payment) %></h2>
+
+  <% end %>
+
+</div>
+
+</body>
+</html>

@@ -1,11 +1,16 @@
 <div class="container">
 	<h1> Payment Form</h1>
 	<%= form_for [@employee, @payment] do |f| %>
+      <% if @payment.errors.any? %>
+          <h2>Errors:</h2>
+          <ul>
+            <% @payment.errors.full_messages.each do |message| %>
+                <li><%=	"* " << message  %><br></li>
+            <%	end  %>
+          </ul>
+      <%	end  %>
 		<%= image_tag @employee.image.url(:medium), alt: "" %>
 		<h1><%= @employee.first_name %> <%= @employee.last_name %> </h1>
-		<br>
-		<%= f.label :Salary %><br>
-		<%= f.text_field :salary %><br>
 		<br>
       <%= f.label :Hrs_extra %><br>
       <%= f.text_field :hrs_extra %><br>
@@ -19,13 +24,6 @@
       <%= f.label :Cost_salary %><br>
       <%= f.text_field :cost_salary %><br>
 		<br>
-		<%= f.label :Extra_pay %><br>
-		<%= f.text_field :extra_pay %><br>
-		<br>
-		<%= f.label :Gross_Pay %><br>
-		<%= f.text_field :gross_pay %><br>
-		<br>
-
 		<%= f.label :Pay_Day %><br>
 		<%= f.date_select :month %><br>
 		<br>

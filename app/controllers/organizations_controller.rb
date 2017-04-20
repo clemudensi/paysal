@@ -1,5 +1,6 @@
 class OrganizationsController < ApplicationController
 	before_action :find_organization, only: [:show, :edit, :update, :destroy]
+	before_action :authenticate_user!, only: [:show, :edit, :index, :new]
 
 
   def index
@@ -8,15 +9,16 @@ class OrganizationsController < ApplicationController
   end
 
   def new
-  	@organization = Organization.new
+  	@organization = current_user.organizations.build
   end 
   
   def create
-  	@organization = Organization.new(organization_params)
+  	@organization = current_user.organizations.build(organization_params)
   	if @organization.save
   		flash[:success] = "Organization was created successfully"
-  		redirect_to @organization, notice: "Organization created successfully"
-  	else
+  		redirect_to @organization
+		else
+			flash[:notice] = "Sorry, please put all required details"
   		render 'new'
   	end
 	end

@@ -1,6 +1,7 @@
 class EmployeesController < ApplicationController
 	before_action :set_employee, only: [:show, :edit, :destroy]
-	before_action :set_organization, only: [:create, :show, :destroy, :update, :edit, :new, :index]
+	before_action :set_organization, only: [:create, :show, :update, :edit, :new, :index]
+	before_action :authenticate_user!, only: [:show, :edit, :index, :new]
   
 
   def index
@@ -18,15 +19,15 @@ class EmployeesController < ApplicationController
       redirect_to organization_employee_path(@employee.organization, @employee)
 
   	else
-  		flash[:notice] = "Sorry, Please put a name"
+  		flash[:notice] = "Sorry, please put all required details"
   		render 'new'
   	end
 	end
 
 	def show
-		@employee = Employee.find(params[:id])
+		# @employee = Employee.find(params[:id])
 		# @payment = Payment.find(params[:id])
-    # @payment = @employee.payments.all
+    # @payments = @employee.payments.all
 
 
 
@@ -51,10 +52,10 @@ class EmployeesController < ApplicationController
 		# @employee = organization.employee.find(params[:id])
 
 		if @employee.destroy
-			flash[:success] = "<%= @employee.first_name %> Employee was deleted"
-    redirect_to organization_path(@organization)
+			flash[:success] = " Employee was deleted successfully"
+    redirect_to organization_path(@employee.organization)
 		else
-			flash[:error] = "Employee was not deleted"
+			# flash[:error] = "Employee was not deleted"
 		    render 'show'
 		end
 
@@ -63,8 +64,8 @@ class EmployeesController < ApplicationController
   private
 
   def set_employee
-  	# @employee = Employee.find(params[:id])
-  end
+		@employee = Employee.find(params[:id])
+	end
 
   def set_organization
 		@organization = Organization.find(params[:organization_id])

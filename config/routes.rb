@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   resources :organizations do
     resources :employees 
     resources :contractors
@@ -21,20 +22,21 @@ Rails.application.routes.draw do
   # get 'contractors/new'
   # get 'contractors/show'
   # patch 'contractors/:id' => 'contractors#update'
-  # get 'organizations/:id/contractors/:id'
+  # get 'employees/:id/payments/:id'
   get 'admin/dashboard'
   get 'admin/accounts'
   get 'admin/payroll'
   get 'admin/userpage'
   get 'admin/organizations'
   get 'admin/trial'
+  get 'contractors/display'
 
   get 'app/index'
 
   get 'welcome/index'
   get 'login', to: 'accounts#login'
   
-  root 'welcome#index'
+  root 'organizations#index'
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

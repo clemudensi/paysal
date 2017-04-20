@@ -1,6 +1,7 @@
 class ContractorsController < ApplicationController
 	before_action :set_contractor, only: [:show, :edit]
 	before_action :set_organization, only: [:create, :show, :destroy, :update, :edit, :new]
+	before_action :authenticate_user!, only: [:show, :edit, :index, :new]
 
 	def index
 		@contractors = Contractor.all
@@ -26,6 +27,10 @@ class ContractorsController < ApplicationController
 
 	def edit
 		@contractor = Contractor.find(params[:id])
+	end
+
+	def display
+    render :layout => false
 	end
 
 	# def update

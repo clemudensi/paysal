@@ -1,6 +1,14 @@
 <div class="container">
 	<h1> Organization Form</h1>
 	<%= form_for @organization, html: { multipart: true } do |f| %>
+      <% if @organization.errors.any? %>
+          <h2>Errors:</h2>
+          <ul>
+            <% @organization.errors.full_messages.each do |message| %>
+                <li><%=	"* " << message  %><br></li>
+            <%	end  %>
+          </ul>
+      <%	end  %>
       <%= f.label :image %><br>
       <%= f.file_field :image %><br>
       <br>

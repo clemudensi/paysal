@@ -1,7 +1,7 @@
 
 <div class="modal-body">
   <%= link_to 'Back', organization_employee_path(@payment.employee.organization, @payment.employee) %> |
-  <%= link_to 'Edit', edit_employee_payment_path(@payment.employee, @payment) %>
+  <%= link_to 'Edit', edit_employee_payment_path(@employee, @payment) %>
 
 	<h1><%= @payment.employee.first_name %>  </h1>
 	<br>

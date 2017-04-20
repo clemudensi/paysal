@@ -1,4 +1,6 @@
 class AdminController < ApplicationController
+  before_action :authenticate_user!, only: [:show, :edit, :payment, :new]
+
   def dashboard
   end
 
