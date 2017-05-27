@@ -22,3 +22,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+# paysal
+
+This is an app for creating employee personal and payment profile.
+It's was styled with Bourbon refills and twitter Bootstrap.
+_Built with Rails 5.0.3._
