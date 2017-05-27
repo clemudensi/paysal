@@ -1,10 +1,8 @@
 class PaymentsController < ApplicationController
 	before_action :set_payment, only: [:show, :edit]
 	before_action :set_employee, only: [:create, :show, :destroy, :update, :edit, :new, :index]
-	# before_action :set_organization, only: [:index]
 
   def index
-    # @payments = Payment.all.order('created_at DESC')
     @payments = @employee.payments.all
   end
 
@@ -19,18 +17,7 @@ class PaymentsController < ApplicationController
   		render 'new'
 		end
 
-		# @extra_pay = (hrs_extra * cost_extra)
-		# @salary = (cost_salary * hrs_worked)
-		# @gross_pay = (@extra_pay + @salary)
 	end
-
-	# def extra_pay
-	# 	@extra_pay = Payment.collect { |payment| payment.hrs_extra * payment.cost_extra}
-	# end
-  #
-	# def salary
-	# 	@salary = Payment.collect { |payment| payment.cost_salary * payment.hrs_worked}
-	# end
 
 
 	def new
@@ -65,7 +52,6 @@ class PaymentsController < ApplicationController
 
 	def set_payment
   	@payment = Payment.find(params[:id])
-    # @payment = @employee.payments.find_by!(id: params[:id]) if @employee
   end
 
   def set_employee

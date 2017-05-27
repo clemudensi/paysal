@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <header class="navigation" role="banner">
-  <div class="navigation-wrapper">
-    <a href="javascript:void(0)" class="logo">
-      <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="Logo Image">
-    </a>
-    <%= link_to 'Organizations', organizations_path %>
-    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
-    <nav role="navigation right">
-      <ul id="js-navigation-menu" class="navigation-menu show">
-        <%= nav_link 'Dashboard', '/admin/dashboard' %>
-        <%= nav_link 'Accounts', '/admin/accounts' %>
-        <%= nav_link 'Payroll', '/admin/payroll' %>
-        <%= nav_link 'Reports', '/admin/dashboard' %>
-      </ul>
-    </nav>
+    <header class="navigation" role="banner">
+      <div class="navigation-wrapper">
+        <a href="/" class="logo">
+          <img src="https://www.tuitionexpress.com/images/te-illustration-bill-pay.png" alt="Logo Image">
+        </a>
 
-    <div class="navigation-tools">
+        <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
+        <nav role="navigation right">
+          <ul id="js-navigation-menu" class="navigation-menu show">
+            <%= nav_link 'Organizations', organizations_path %>
+            <%# <%= nav_link 'Dashboard', '/admin/dashboard' %>
+            <%#<%= nav_link 'Accounts', '/admin/accounts' %>
+            <%= nav_link 'Payroll', '/admin/payroll' %>
+            <%= nav_link 'Reports', '/admin/dashboard' %>
+          </ul>
+        </nav>
 
-    </div>
-  </div>
-</header>
+        <div class="navigation-tools"></div>
+      </div>
+    </header>
     <title>Payroll App</title>
     <%= csrf_meta_tags %>
    
@@ -30,18 +29,25 @@
   </head>
 
   <body>
-  <div class="container-fluid">
-  <div class="alert-danger col-lg-4"><%= notice %></div>
-  <p class="alert-alert"><%= alert %></p>
+    <div class="container-fluid">
+      <p class="alert-success "><%= notice %></p>
+        <div class="alert-danger"><%= alert %></div>
+      <% if !user_signed_in? %>
+          <%=	link_to 'Sign Up', new_user_registration_path %>|
+          <%=	link_to 'Sign In', new_user_session_path %>|
+      <% else %>
+          <%=	link_to 'Sign Out', destroy_user_session_path, :method => :delete %>
+      <% end %>
+          <br>
+    </div>
     <br>
-  </div>
-  <br>
+
     <%= yield %>
   </body>
 
   <footer class="footer" role="contentinfo">
   <div class="footer-logo">
-    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="Logo image">
+    <img src="https://www.tuitionexpress.com/images/te-illustration-bill-pay.png" alt="Logo image">
   </div>
   <div class="footer-links">
     <ul>

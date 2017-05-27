@@ -1,34 +1,41 @@
-<div class="container">
 
-		<%= link_to 'Add New Employee', new_organization_employee_path(@organization) %> |
-		<%= link_to 'Add New Contractor', new_organization_contractor_path(@organization) %>
+<div class="container bootstrap snippet">
+  <div>
+    <h1>Employees of <%= @organization.legal_name %></h1>
+    <div class="alert-success" id="notice"><%= flash[:notice] %></div>
+  </div>
 
-		<h1>Employees of <%= @organization.legal_name %></h1>
-  <div class="alert-success" id="notice"><%= flash[:notice] %></div>
+  <%= link_to 'Add New Employee', new_organization_employee_path(@organization) %> |
+  <%= link_to 'Add New Contractor', new_organization_contractor_path(@organization) %>
+  <br>
+  <hr>
+  <% @employees.each do |employee| %>
+      <div class="well search-result">
+        <div class="row">
 
-		<div class="container">
-          <table class="table">
-            <thead>
-            <tr>
-              <th><h1>Employee/ID</h1></th>
-            </tr>
-            </thead>
-            <% @employees.each do |employee| %>
-            <tbody>
-            <tr>
-              <td><h3><%= link_to employee.first_name << ' ' << employee.last_name, organization_employee_path(@organization, employee.id) %></h3></td>
-            </tr>
-            </tbody>
-            <% end %>
-          </table>
+          <div class="col-xs-6 col-sm-3 col-md-3 col-lg-2">
+            <%= image_tag employee.image.url(:medium), alt: "Show Image" %>
+          </div>
+          <div class="col-xs-6 col-sm-9 col-md-9 col-lg-10 title">
+            <h3><%= link_to employee.first_name << ' ' << employee.last_name, organization_employee_path(@organization, employee.id) %></h3>
+            <p>Employee ID: <%= employee.id %></p>
+          </div>
+          <hr>
 
-      <%= react_component 'Contractor' %>
-      <!--<div id="app"></div>-->
+        </div>
+      </div>
+  <% end %>
 
-			
-		</div>
-		
-		<%= link_to 'Edit', edit_organization_path(@organization) %> |
-		<%= link_to 'Back', organizations_path %>
-
+  <button class="btn btn-default">
+    <%= link_to 'Edit Company Profile', edit_organization_path(@organization) %>
+  </button>
+  <button class="btn btn-default">
+    <%= link_to 'Back', organizations_path %>
+  </button>
 </div>
+
+
+
+		
+
+

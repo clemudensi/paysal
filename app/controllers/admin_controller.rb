@@ -8,6 +8,7 @@ class AdminController < ApplicationController
   	@employee = Employee.all
   	@contractor = Contractor.all
     @organization = Organization.all
+    @payment = Payment.all
   end
 
   def payroll

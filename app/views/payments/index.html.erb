@@ -9,14 +9,14 @@
 </head>
 <body>
 
-<div class="container">
-
-  <% @payments.each do |payment| %>
-      <h2><%= link_to payment.employee.first_name, employee_payment_path(payment.employee, payment) %></h2>
-
-  <% end %>
-
-</div>
+  <div class="container">
+    <% @payments.each do |payment| %>
+        <h2><%= link_to payment.employee.first_name, employee_payment_path(payment.employee, payment) %></h2>
+    <% end %>
+    <button class="pull-right btn btn-default">
+      <%= link_to 'Back', organization_employee_path(@employee.organization, @employee) %>
+    </button>
+  </div>
 
 </body>
 </html>

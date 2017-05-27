@@ -33,17 +33,6 @@ class ContractorsController < ApplicationController
     render :layout => false
 	end
 
-	# def update
-	# 	Contractor.update(params[:id], contractor_params)
-	# 	# @contractor = Contractor.find(params[:id])
-	# 	if @contractor.update(contractor_params)
-	# 		redirect_to @contractor
-	# 	else
-	# 		render 'edit'
-	# 	end
-
-	# end
-
 	private 
 
 	def set_contractor

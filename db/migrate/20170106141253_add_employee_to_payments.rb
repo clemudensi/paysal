@@ -3,3 +3,4 @@ class AddEmployeeToPayments < ActiveRecord::Migration[5.0]
     add_reference :payments, :employee, foreign_key: true
   end
 end
+

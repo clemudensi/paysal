@@ -1,48 +1,59 @@
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+<link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
 
-<div class="container">
-<h1>Admin#dashboard</h1>
-<div class="grid-items-lines">
-  <a href="javascript:void(0)" class="grid-item">
-    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="">
-    <h1>Staff paid</h1>
-    <p><%= %></p>
-  </a>
-  <a href="javascript:void(0)" class="grid-item">
-    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="">
-    <h1>Overtime to be approved</h1>
-    <p><%= %></p>
-  </a>
-  <a href="javascript:void(0)" class="grid-item">
-    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="">
-    <h1>Contract staff paid</h1>
-    <p><%= %></p>
-  </a>
-  <a href="javascript:void(0)" class="grid-item">
-    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="">
-    <h1>Cash Advance Request</h1>
-    <p><%= %></p>
-  </a>
-  <a href="javascript:void(0)" class="grid-item grid-item-big">
-    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="">
-    <h1>Next Pay Day</h1>
-    <p><%= %></p>
-  </a>
-  <a href="javascript:void(0)" class="grid-item">
-    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="">
-    <h1>Pending payment</h1>
-    <p>L<%= %></p>
-  </a>
-  <a href="javascript:void(0)" class="grid-item">
-    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="">
-    <h1>Item</h1>
-    <p><%= %></p>
-  </a>
-  <a href="javascript:void(0)" class="grid-item">
-    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="">
-    <h1>Last Grid Item</h1>
-    <p><%= %></p>
-  </a>
-  <div class="right-cover"></div>
-  <div class="bottom-cover"></div>
+<div class="container-fluid">
+  <div class="row social-resume">
+    <div class="col-lg-6 col-sm-6">
+      <section class="panel">
+        <div class="icon-content facebook">
+          <i class="fa fa-sitemap"></i>
+        </div>
+        <div class="value">
+          <h1 class="count"><%= Organization.count %></h1>
+          <p>Number of Organization</p>
+        </div>
+      </section>
+    </div>
+    <div class="col-lg-6 col-sm-6">
+      <section class="panel">
+        <div class="icon-content google-plus">
+          <i class="fa fa-user"></i>
+        </div>
+        <div class="value">
+          <h1 class="count2"><%= Contractor.count %></h1>
+          <p>Number of contract staffs</p>
+        </div>
+      </section>
+    </div>
+    <div class="col-lg-6 col-sm-6">
+      <section class="panel">
+        <div class="icon-content twitter">
+          <i class="fa fa-user"></i>
+        </div>
+        <div class="value">
+          <h1 class="count3"><%= Employee.count %></h1>
+          <p>Number of full time employees</p>
+        </div>
+      </section>
+    </div>
+    <div class="col-lg-6 col-sm-6">
+      <section class="panel">
+        <div class="icon-content youtube">
+          <i class="fa fa-money"></i>
+        </div>
+        <div class="value">
+          <h1 class="count4"> <% @pay = Payment.all.to_a %>
+            <% payer = @pay.select do |i| %>
+                <% i.payment_status == true %>
+            <% end %>
+            <%= payer.count %></h1>
+          <p>Number of staffs paid</p>
+        </div>
+      </section>
+    </div>
+  </div>
 </div>
 </div>
+
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript"></script>

@@ -2,9 +2,6 @@
 <div class="container">
 	<% @contractors.each do |contractor| %>
 		<h1><%= contractor.first_name %></h1>
-		
 	<% end %>
-
 	<%= link_to 'Add New Contractor', new_organization_contractor_path %>
-
 </div>

@@ -2,23 +2,36 @@
 <html>
 <head>
   <title>Blog</title>
-   <%= javascript_include_tag 'application' %>
-   
-  <%= favicon_link_tag 'favicon.ico' %>
-  <%= csrf_meta_tags %>
 </head>
 <body>
 
-<div class="container">
-	<%= link_to 'Create New Company',  new_organization_path(@organization) %> |
-	<%= link_to 'Dashboard', admin_dashboard_path %>
+  <div class="container bootstrap snippet">
+    <%= link_to 'Create New Company',  new_organization_path(@organization) %> |
+    <%= link_to 'Dashboard', admin_dashboard_path %>
+    <br>
+    <hr>
+    <% @organizations.each do |organization| %>
+      <div class="well search-result">
+        <div class="row">
 
-	<% @organizations.each do |organization| %>
-		<h2><%= link_to organization.legal_name, organization_path(organization.id) %></h2>
-		<%= link_to "Delete", organization_path(organization), method: :delete, data: { confirm: "Are you sure?" } %>
-	
-	<% end %>
-</div>
+            <div class="col-xs-6 col-sm-3 col-md-3 col-lg-2">
+              <%= image_tag organization.image.url(:medium), alt: "Show Image" %>
+            </div>
+            <div class="col-xs-6 col-sm-9 col-md-9 col-lg-10 title">
+              <h3><%= link_to organization.legal_name, organization_path(organization.id) %></h3>
+              <p><%= organization.address_id %></p>
+            </div>
+            <hr>
+
+              <button type="button" class="btn btn-default btn-lg pull-right">
+              <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+              <%= link_to "Delete", organization_path(organization), method: :delete, data: { confirm: "Are you sure?" } %>
+              </button>
+
+        </div>
+      </div>
+    <% end %>
+  </div>
 
 </body>
 </html>

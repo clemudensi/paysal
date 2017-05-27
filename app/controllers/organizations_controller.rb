@@ -1,6 +1,6 @@
 class OrganizationsController < ApplicationController
 	before_action :find_organization, only: [:show, :edit, :update, :destroy]
-	before_action :authenticate_user!, only: [:show, :edit, :index, :new]
+	before_action :authenticate_user!, only: [:show, :index]
 
 
   def index

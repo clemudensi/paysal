@@ -1,4 +1,6 @@
-<br>
-<%= link_to 'Back', organization_employee_path(@organization, @employee) %>
-<br>
 <%= render 'form' %>
+<div class="container">
+  <button class="btn btn-default">
+  <%= link_to 'Back', organization_employee_path(@organization, @employee) %>
+  </button>
+</div>

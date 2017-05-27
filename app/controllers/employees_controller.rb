@@ -47,16 +47,11 @@ class EmployeesController < ApplicationController
 	end
 
 	def destroy
-		# @employee = Employee.find(params[:id])
-		# @employee.destroy
-		# @employee = organization.employee.find(params[:id])
-
 		if @employee.destroy
 			flash[:success] = " Employee was deleted successfully"
-    redirect_to organization_path(@employee.organization)
+    	redirect_to organization_path(@employee.organization)
 		else
-			# flash[:error] = "Employee was not deleted"
-		    render 'show'
+			render 'show'
 		end
 
 	end

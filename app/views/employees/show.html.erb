@@ -1,47 +1,149 @@
-<!DOCTYPE html>
-<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
   <head>
     <title>Payroll App</title>
     <%= csrf_meta_tags %>
-   
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-	  <div class="container">
-	  	<div class="modal-header">
-	    <%= link_to 'New Payment detail', new_employee_payment_path(@employee) %> |
-        <%= link_to 'Edit', edit_organization_employee_path(@employee.organization, @employee) %> |
-        <%= link_to 'Payment details', employee_payments_path(@employee) %>
 
-		</div>      <!-- /modal-header -->
-      <div class="alert-success" id="notice"><%= flash[:notice] %></div>
 
-      <div class="modal-body">
-	    		<h2><%= @employee.first_name %> <%= @employee.last_name %> </h2>
-	    		<br>
-				<%= image_tag @employee.image.url(:medium), alt: "" %>
-				<br>
-				<p>First name: <%= @employee.first_name %></p>
-				<p>Last name: <%= @employee.last_name %></p>
-				<p>Middle name: <%= @employee.middle_name %></p>
-				<p>Gender: <%= @employee.gender %></p>
-				<p>Bank account: <%= @employee.bank_account_id %></p>
-				<p>Employee status: <%= @employee.employee_id %></p>
-				<p>Date of Birth: <%= @employee.date_of_birth %></p>
-				<p>Job title: <%= @employee.job_title %></p>
-				<p>Date Joined: <%= @employee.date_joined_company %></p>
-				<p>Residential Address: <%= @employee.residential_address %></p>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
-				<%= link_to 'Edit', edit_organization_employee_path %> |
-				<%= link_to 'Back', organization_path(@organization) %> |
-				<%= link_to 'Delete', organization_employee_path, method: :delete, data: {confirm: 'Are you sure you want to delete?'} %>
-			</div>      <!-- /modal-body -->
-	    <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	    </div>   
-		</div>
- 	</body>
-</html>
 
+<div class="tab-content no-border padding-24">
+  <%= link_to 'New Payment detail', new_employee_payment_path(@employee) %> |
+  <%= link_to 'Edit', edit_organization_employee_path(@employee.organization, @employee) %> |
+  <%= link_to 'Payment details', employee_payments_path(@employee) %>
+  <hr>
+  <div class="alert-success" id="notice"><%= flash[:notice] %></div>
+  <div id="home" class="tab-pane in active">
+    <div class="row">
+      <div class="col-xs-12 col-sm-3 center">
+							<span class="profile-picture">
+								<%= image_tag @employee.image.url(:medium), alt: "" %>
+							</span>
+
+        <div class="space space-4"></div>
+
+        <%= link_to 'Edit', edit_organization_employee_path(@employee.organization, @employee) %>
+          <i class="ace-icon fa fa-edit bigger-120"></i>
+          <span class="bigger-110">edit</span>
+
+
+        <%= link_to 'Delete', organization_employee_path, method: :delete, data: {confirm: 'Are you sure you want to delete?'} %>
+          <i class="ace-icon fa fa-trash"></i>
+          <span class="bigger-110">Delete</span>
+
+        <%= link_to 'Back', organization_path(@organization) %>
+        <i class="ace-icon fa fa-reply"></i>
+        <span class="bigger-110">Back</span>
+
+      </div><!-- /.col -->
+
+      <div class="col-xs-12 col-sm-9">
+        <h4 class="blue">
+          <span class="middle"><%= @employee.first_name %> <%= @employee.last_name %> </span>
+
+
+        </h4>
+
+        <div class="profile-user-info">
+          <div class="profile-info-row">
+            <div class="profile-info-name"> First name:  </div>
+
+            <div class="profile-info-value">
+              <span><%= @employee.first_name %></span>
+            </div>
+          </div>
+
+          <div class="profile-info-row">
+            <div class="profile-info-name"> Address </div>
+
+            <div class="profile-info-value">
+              <i class="fa fa-map-marker light-orange bigger-110"></i>
+              <span><%= @employee.residential_address %></span>
+
+            </div>
+          </div>
+
+          <div class="profile-info-row">
+            <div class="profile-info-name"> Employee ID:  </div>
+
+            <div class="profile-info-value">
+              <span><%= @employee.employee_id %></span>
+            </div>
+          </div>
+
+          <div class="profile-info-row">
+            <div class="profile-info-name"> Date Joined:  </div>
+
+            <div class="profile-info-value">
+              <span><%= @employee.date_joined_company %></span>
+            </div>
+          </div>
+
+          <div class="profile-info-row">
+            <div class="profile-info-name"> Last Online </div>
+
+            <div class="profile-info-value">
+              <span>3 hours ago</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="profile-info-row">
+          <div class="profile-info-name"> Gender:  </div>
+
+          <div class="profile-info-value">
+            <span><%= @employee.gender %></span>
+          </div>
+        </div>
+
+        <div class="profile-info-row">
+          <div class="profile-info-name"> Job title:  </div>
+
+          <div class="profile-info-value">
+            <span> <%= @employee.job_title %></span>
+          </div>
+        </div>
+
+        <div class="profile-info-row">
+          <div class="profile-info-name"> Bank Account:  </div>
+
+          <div class="profile-info-value">
+            <span> <%= @employee.bank_account_id %></span>
+          </div>
+        </div>
+
+          <div class="profile-info-row">
+            <div class="profile-info-name">
+              <i class="middle ace-icon fa fa-facebook-square bigger-150 blue"></i>
+            </div>
+
+            <div class="profile-info-value">
+              <a href="#">Find me on Facebook</a>
+            </div>
+          </div>
+
+          <div class="profile-info-row">
+            <div class="profile-info-name">
+              <i class="middle ace-icon fa fa-twitter-square bigger-150 light-blue"></i>
+            </div>
+
+            <div class="profile-info-value">
+              <a href="#">Follow me on Twitter</a>
+            </div>
+          </div>
+        </div>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+
+    <div class="space-20"></div>
+
+  </div>
+</div>
